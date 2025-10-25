@@ -101,3 +101,81 @@
     font-size: 1.8rem;
   }
 }
+
+/* Floating Action Button */
+.floating-add-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--background-light);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  
+  /* Neomorphism effect */
+  box-shadow: 8px 8px 16px var(--shadow-dark),
+    -8px -8px 16px var(--shadow-light);
+}
+
+.floating-add-button:hover {
+  box-shadow: 12px 12px 24px var(--shadow-dark),
+    -12px -12px 24px var(--shadow-light);
+  transform: translateY(-2px) scale(1.05);
+}
+
+.floating-add-button:active {
+  box-shadow: inset 4px 4px 8px var(--shadow-dark),
+    inset -4px -4px 8px var(--shadow-light);
+  transform: translateY(0) scale(0.95);
+}
+
+.floating-add-button svg {
+  color: var(--capital-one-blue);
+  transition: color 0.3s ease;
+}
+
+.floating-add-button:hover svg {
+  color: var(--capital-one-red);
+}
+
+/* Mobile adjustments for floating button */
+@media (max-width: 768px) {
+  .floating-add-button {
+    bottom: 20px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+  }
+  
+  .floating-add-button svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Accessibility */
+.floating-add-button:focus {
+  outline: 3px solid var(--capital-one-red);
+  outline-offset: 2px;
+}
+
+.floating-add-button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-add-button {
+    transition: none;
+  }
+  
+  .floating-add-button:hover {
+    transform: none;
+  }
+}
