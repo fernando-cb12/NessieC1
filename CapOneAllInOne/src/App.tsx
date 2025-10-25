@@ -4,7 +4,7 @@ import "./App.css";
 import Accounts from "./routes/Accounts/Accounts";
 import Stocks from "./routes/Stocks";
 import Analytics from "./routes/Analytics";
-import Groups from "./routes/Groups";
+import Groups from "./routes/Groups/Groups";
 import Navbar from "./components/Navbar/Navbar";
 
 function App() {
