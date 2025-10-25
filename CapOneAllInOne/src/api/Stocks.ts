@@ -4,8 +4,8 @@ import type { StockPosition, MarketData } from "../types";
  * Alpaca API Configuration
  * IMPORTANTE: Reemplaza con tus credenciales de Paper Trading
  */
-const ALPACA_API_KEY = "PK6SIPNHSOLYKUGG2JJXE7ZHIM";
-const ALPACA_SECRET_KEY = "Dxqwc9onbF9ErydYg9RaKVGnBCRyiBGkPUhscs9XnW3q"; // Nota: Esta key se cortó en la imagen
+const ALPACA_API_KEY = "";
+const ALPACA_SECRET_KEY = ""; // Nota: Esta key se cortó en la imagen
 const ALPACA_BASE_URL = "https://paper-api.alpaca.markets"; // Paper trading soporta CORS
 
 /**
