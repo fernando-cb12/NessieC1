@@ -116,7 +116,6 @@ const AccountCard: React.FC<AccountCardProps> = ({
         </>
       )}
 
-      {/* Metadata - Only shown when not expanded */}
       {!isExpanded && lastUpdated && (
         <>
           <div className={styles.divider} />
