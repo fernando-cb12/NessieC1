@@ -1,0 +1,78 @@
+/* Capital One Color Palette */
+:root {
+  --capital-one-blue: #004879;
+  --capital-one-red: #d22e1e;
+  --background-light: #f0f0f0;
+  --background-dark: #e8e8e8;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --white: #ffffff;
+  --shadow-light: rgba(255, 255, 255, 0.7);
+  --shadow-dark: rgba(0, 0, 0, 0.15);
+}
+
+.infoButton {
+  position: fixed;
+  bottom: 120px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 20px;
+  background: var(--capital-one-blue);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+
+  /* Floating effect */
+  box-shadow: 0 8px 24px rgba(0, 72, 121, 0.4), 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.infoButton:hover {
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 72, 121, 0.5), 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.infoButton:active {
+  transform: scale(0.98);
+  box-shadow: 0 4px 16px rgba(0, 72, 121, 0.3), 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.infoButton svg {
+  color: var(--white);
+}
+
+/* Desktop Styles */
+@media (min-width: 769px) {
+  .infoButton {
+    bottom: 40px;
+    right: 40px;
+    width: 64px;
+    height: 64px;
+    border-radius: 22px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .infoButton {
+    transition: none;
+  }
+
+  .infoButton:hover {
+    transform: none;
+  }
+}
+
+.infoButton:focus {
+  outline: 3px solid var(--capital-one-red);
+  outline-offset: 2px;
+}
+
+.infoButton:focus:not(:focus-visible) {
+  outline: none;
+}

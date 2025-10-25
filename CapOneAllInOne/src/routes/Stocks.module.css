@@ -1,0 +1,120 @@
+/* Capital One Color Palette */
+:root {
+  --capital-one-blue: #004879;
+  --capital-one-red: #d22e1e;
+  --background-light: #f0f0f0;
+  --background-dark: #e8e8e8;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --white: #ffffff;
+  --shadow-light: rgba(255, 255, 255, 0.7);
+  --shadow-dark: rgba(0, 0, 0, 0.15);
+}
+
+.stocksContainer {
+  min-height: 100vh;
+  background: var(--background-light);
+  padding: 20px;
+  padding-bottom: 120px;
+}
+
+.marketSection {
+  margin-bottom: 32px;
+}
+
+.marketTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
+}
+
+.marketGrid {
+  display: flex;
+  flex-direction: column;
+}
+
+.gridHeader {
+  display: none;
+}
+
+/* Loading State */
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.loadingSpinner {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--background-light);
+  box-shadow: inset 4px 4px 8px var(--shadow-dark),
+    inset -4px -4px 8px var(--shadow-light);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(0.95);
+  }
+}
+
+/* Error State */
+.errorMessage {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--capital-one-red);
+}
+
+.errorMessage p {
+  margin: 8px 0;
+}
+
+/* Desktop Styles */
+@media (min-width: 769px) {
+  .stocksContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 120px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+  }
+
+  .marketTitle {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .marketSection {
+    margin-bottom: 40px;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1024px) {
+  .stocksContainer {
+    max-width: 1400px;
+    padding-left: 140px;
+  }
+
+  .marketTitle {
+    font-size: 22px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .loadingSpinner {
+    animation: none;
+  }
+}
