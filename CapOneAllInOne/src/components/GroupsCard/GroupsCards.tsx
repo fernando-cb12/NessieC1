@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Users, ChevronDown, DollarSign, Calendar, Settings } from "lucide-react";
+import { Users, ChevronDown, DollarSign, Calendar, Settings, Bell, ArrowUp, BookCheck, ArrowUpFromLine, ArrowLeftRight, Receipt} from "lucide-react";
 import type { Group } from "../../types.d";
 import styles from "./GroupsCard.module.css";
 
@@ -218,7 +218,7 @@ const GroupsCard: React.FC<GroupsCardProps> = ({ group }) => {
               }}
               aria-label="Manage group"
             >
-              <Settings size={20} />
+              <Receipt size={20} />
             </button>
             <button
               className={styles.actionButton}
@@ -228,7 +228,7 @@ const GroupsCard: React.FC<GroupsCardProps> = ({ group }) => {
               }}
               aria-label="View transactions"
             >
-              <DollarSign size={20} />
+               <Bell size={20} />
             </button>
             <button
               className={styles.actionButton}
@@ -238,7 +238,37 @@ const GroupsCard: React.FC<GroupsCardProps> = ({ group }) => {
               }}
               aria-label="View members"
             >
-              <Users size={20} />
+              <ArrowLeftRight size={20} />
+            </button>
+            <button
+              className={styles.actionButton}
+              onClick={(e) => {
+                e.stopPropagation();
+                console.log("Add member");
+              }}
+              aria-label="Add member"
+            >
+              <BookCheck size={20} />
+            </button>
+            <button
+              className={styles.actionButton}
+              onClick={(e) => {
+                e.stopPropagation();
+                console.log("View analytics");
+              }}
+              aria-label="View analytics"
+            >
+              <ArrowUp size={20} />
+            </button>
+            <button
+              className={styles.actionButton}
+              onClick={(e) => {
+                e.stopPropagation();
+                console.log("Export data");
+              }}
+              aria-label="Export data"
+            >
+              <ArrowUpFromLine size={20} />
             </button>
           </div>
         </>

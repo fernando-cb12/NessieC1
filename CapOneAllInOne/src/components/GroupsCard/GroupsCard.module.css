@@ -344,13 +344,16 @@
 
 /* Action Menu */
 .actionMenu {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   gap: 12px;
   align-items: center;
-  justify-content: center;
+  justify-items: center;
   padding: 12px 0;
   animation: fadeIn 0.3s ease-out;
 }
+
 
 @keyframes fadeIn {
   from {
