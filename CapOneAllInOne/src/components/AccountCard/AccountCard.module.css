@@ -1,0 +1,286 @@
+/* Capital One Color Palette */
+:root {
+  --capital-one-blue: #004879;
+  --capital-one-red: #d22e1e;
+  --background-light: #f0f0f0;
+  --background-dark: #e8e8e8;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --white: #ffffff;
+  --shadow-light: rgba(255, 255, 255, 0.7);
+  --shadow-dark: rgba(0, 0, 0, 0.15);
+}
+
+/* Account Card Container */
+.accountCard {
+  background: var(--background-light);
+  border-radius: 24px;
+  padding: 20px;
+  margin: 16px 0;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Neomorphism effect */
+  box-shadow: 8px 8px 16px var(--shadow-dark),
+    -8px -8px 16px var(--shadow-light);
+}
+
+.accountCard:hover {
+  box-shadow: 12px 12px 24px var(--shadow-dark),
+    -12px -12px 24px var(--shadow-light);
+  transform: translateY(-2px);
+}
+
+.accountCard:active {
+  box-shadow: inset 4px 4px 8px var(--shadow-dark),
+    inset -4px -4px 8px var(--shadow-light);
+  transform: translateY(0);
+}
+
+.accountCard.expanded {
+  box-shadow: 12px 12px 24px var(--shadow-dark),
+    -12px -12px 24px var(--shadow-light);
+}
+
+/* Card Header */
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.accountInfo {
+  flex: 1;
+}
+
+.accountType {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.accountNickname {
+  font-size: 18px;
+  color: var(--text-primary);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.accountNumber {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-family: "Courier New", monospace;
+  letter-spacing: 1px;
+}
+
+/* Expand Icon */
+.expandIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--text-secondary);
+}
+
+.expandIcon:hover {
+  background: var(--background-dark);
+  color: var(--capital-one-blue);
+}
+
+.expandIcon svg {
+  transition: transform 0.3s ease;
+}
+
+.expandIcon.expanded svg {
+  transform: rotate(180deg);
+}
+
+/* Balance Section */
+.balanceSection {
+  margin: 20px 0;
+}
+
+.balanceLabel {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.balanceAmount {
+  font-size: 32px;
+  color: var(--capital-one-blue);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* Action Menu */
+.actionMenu {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.actionButton {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: var(--background-light);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Neomorphism button */
+  box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+}
+
+.actionButton:hover {
+  box-shadow: 6px 6px 12px var(--shadow-dark),
+    -6px -6px 12px var(--shadow-light);
+  transform: translateY(-2px);
+}
+
+.actionButton:active {
+  box-shadow: inset 2px 2px 4px var(--shadow-dark),
+    inset -2px -2px 4px var(--shadow-light);
+  transform: translateY(0);
+}
+
+.actionButton svg {
+  color: var(--capital-one-blue);
+  transition: color 0.3s ease;
+}
+
+.actionButton:hover svg {
+  color: var(--capital-one-red);
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--shadow-dark) 50%,
+    transparent
+  );
+  margin: 16px 0;
+}
+
+/* Metadata */
+.metadata {
+  font-size: 11px;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.statusBadge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  /* Neomorphism badge */
+  box-shadow: inset 2px 2px 4px var(--shadow-dark),
+    inset -2px -2px 4px var(--shadow-light);
+}
+
+.statusBadge.active {
+  color: var(--capital-one-blue);
+  background: var(--background-light);
+}
+
+/* Desktop Styles */
+@media (min-width: 769px) {
+  .accountCard {
+    padding: 24px;
+    border-radius: 28px;
+  }
+
+  .accountNickname {
+    font-size: 20px;
+  }
+
+  .balanceAmount {
+    font-size: 36px;
+  }
+
+  .actionButton {
+    width: 56px;
+    height: 56px;
+    border-radius: 18px;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1024px) {
+  .accountCard {
+    padding: 28px;
+    border-radius: 32px;
+  }
+
+  .balanceAmount {
+    font-size: 40px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .accountCard,
+  .actionButton,
+  .expandIcon,
+  .actionMenu {
+    transition: none;
+    animation: none;
+  }
+
+  .accountCard:hover,
+  .actionButton:hover {
+    transform: none;
+  }
+}
+
+.actionButton:focus,
+.accountCard:focus {
+  outline: 3px solid var(--capital-one-red);
+  outline-offset: 2px;
+}
+
+.actionButton:focus:not(:focus-visible),
+.accountCard:focus:not(:focus-visible) {
+  outline: none;
+}
