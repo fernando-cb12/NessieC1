@@ -1,6 +1,5 @@
 from sqlalchemy import create_engine, Column, Integer, String, Float, DateTime, Boolean, Text
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, declarative_base
 from datetime import datetime
 import redis
 
@@ -11,8 +10,14 @@ engine = create_engine(settings.DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
-# Redis setup for caching
-redis_client = redis.from_url(settings.REDIS_URL)
+# Redis setup for caching (with fallback to in-memory cache)
+try:
+    redis_client = redis.from_url(settings.REDIS_URL)
+    redis_client.ping()  # Test connection
+except:
+    # Fallback to in-memory cache if Redis is not available
+    from app.core.cache import InMemoryCache
+    redis_client = InMemoryCache()
 
 # Database Models
 class Account(Base):
