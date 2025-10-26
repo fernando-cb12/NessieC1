@@ -1,5 +1,17 @@
 import React, { useState } from "react";
-import { Users, ChevronDown, DollarSign, Calendar, Settings, Bell, ArrowUp, BookCheck, ArrowUpFromLine, ArrowLeftRight, Receipt, Wallet} from "lucide-react";
+import {
+  Users,
+  ChevronDown,
+  DollarSign,
+  Calendar,
+  Settings,
+  Bell,
+  ArrowUp,
+  BookCheck,
+  ArrowUpFromLine,
+  ArrowLeftRight,
+  Receipt,
+} from "lucide-react";
 import type { Group } from "../../types.d";
 import styles from "./GroupsCard.module.css";
 
@@ -33,35 +45,35 @@ const GroupsCard: React.FC<GroupsCardProps> = ({ group }) => {
 
   const getGroupIcon = (type: string) => {
     switch (type) {
-      case 'company':
-        return '🏢';
-      case 'job':
-        return '💼';
-      case 'business':
-        return '📈';
-      case 'friends':
-        return '👥';
-      case 'family':
-        return '👨‍👩‍👧‍👦';
+      case "company":
+        return "🏢";
+      case "job":
+        return "💼";
+      case "business":
+        return "📈";
+      case "friends":
+        return "👥";
+      case "family":
+        return "👨‍👩‍👧‍👦";
       default:
-        return '👥';
+        return "👥";
     }
   };
 
   const getGroupColor = (type: string) => {
     switch (type) {
-      case 'company':
-        return 'var(--capital-one-blue)';
-      case 'job':
-        return '#2E7D32';
-      case 'business':
-        return '#FF6F00';
-      case 'friends':
-        return '#7B1FA2';
-      case 'family':
-        return '#D32F2F';
+      case "company":
+        return "var(--capital-one-blue)";
+      case "job":
+        return "#2E7D32";
+      case "business":
+        return "#FF6F00";
+      case "friends":
+        return "#7B1FA2";
+      case "family":
+        return "#D32F2F";
       default:
-        return 'var(--capital-one-blue)';
+        return "var(--capital-one-blue)";
     }
   };
 
@@ -95,7 +107,7 @@ const GroupsCard: React.FC<GroupsCardProps> = ({ group }) => {
           <div className={styles.divider} />
           <div className={styles.balanceSection}>
             <div className={styles.balanceLabel}>Total Group Balance</div>
-            <div 
+            <div
               className={styles.balanceAmount}
               style={{ color: getGroupColor(group.type) }}
             >
@@ -149,9 +161,15 @@ const GroupsCard: React.FC<GroupsCardProps> = ({ group }) => {
               {group.sharedAccounts.map((account) => (
                 <div key={account.id} className={styles.accountItem}>
                   <div className={styles.accountInfo}>
-                    <span className={styles.accountName}>{account.nickname}</span>
-                    <span className={styles.accountType}>{account.accountType}</span>
-                    <span className={styles.accountNumber}>{account.accountNumber}</span>
+                    <span className={styles.accountName}>
+                      {account.nickname}
+                    </span>
+                    <span className={styles.accountType}>
+                      {account.accountType}
+                    </span>
+                    <span className={styles.accountNumber}>
+                      {account.accountNumber}
+                    </span>
                     <div className={styles.permissions}>
                       {account.permissions.map((permission) => (
                         <span key={permission} className={styles.permissionTag}>
@@ -182,7 +200,9 @@ const GroupsCard: React.FC<GroupsCardProps> = ({ group }) => {
             <div className={styles.settingsList}>
               <div className={styles.settingItem}>
                 <span className={styles.settingLabel}>Visibility:</span>
-                <span className={styles.settingValue}>{group.settings.visibility}</span>
+                <span className={styles.settingValue}>
+                  {group.settings.visibility}
+                </span>
               </div>
               <div className={styles.settingItem}>
                 <span className={styles.settingLabel}>Member Invites:</span>
@@ -198,7 +218,9 @@ const GroupsCard: React.FC<GroupsCardProps> = ({ group }) => {
               </div>
               <div className={styles.settingItem}>
                 <span className={styles.settingLabel}>Created:</span>
-                <span className={styles.settingValue}>{formatDate(group.createdAt)}</span>
+                <span className={styles.settingValue}>
+                  {formatDate(group.createdAt)}
+                </span>
               </div>
             </div>
           </div>
@@ -228,7 +250,7 @@ const GroupsCard: React.FC<GroupsCardProps> = ({ group }) => {
               }}
               aria-label="View transactions"
             >
-               <Bell size={20} />
+              <Bell size={20} />
             </button>
             <button
               className={styles.actionButton}
@@ -292,7 +314,7 @@ const GroupsCard: React.FC<GroupsCardProps> = ({ group }) => {
       )}
 
       {/* Group Type Badge */}
-      <div 
+      <div
         className={styles.typeBadge}
         style={{ backgroundColor: getGroupColor(group.type) }}
       >
