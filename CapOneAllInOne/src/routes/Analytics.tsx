@@ -7,30 +7,53 @@ import type { Account } from "../types";
 // Recharts
 import {
   ResponsiveContainer,
-  BarChart, Bar,
-  PieChart, Pie, Cell,
-  AreaChart, Area,
-  CartesianGrid, XAxis, YAxis, Tooltip, Legend,
+  BarChart,
+  Bar,
+  PieChart,
+  Pie,
+  Cell,
+  AreaChart,
+  Area,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
 } from "recharts";
+import FinanceAgent from "../components/FinanceAgent/FinanceAgent";
 
 const fmtMoney = (v: number) =>
-  v.toLocaleString("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 2 });
+  v.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+  });
 
-const PIE_COLORS = ["#2563eb","#ef4444","#10b981","#f59e0b","#8b5cf6","#14b8a6","#e11d48"];
+const PIE_COLORS = [
+  "#2563eb",
+  "#ef4444",
+  "#10b981",
+  "#f59e0b",
+  "#8b5cf6",
+  "#14b8a6",
+  "#e11d48",
+];
 
 function lastNMonthsLabels(n = 6): string[] {
   const labels: string[] = [];
   const d = new Date();
   for (let i = n - 1; i >= 0; i--) {
     const dt = new Date(d.getFullYear(), d.getMonth() - i, 1);
-    labels.push(`${dt.toLocaleString("en-US", { month: "short" })} ${dt.getFullYear()}`);
+    labels.push(
+      `${dt.toLocaleString("en-US", { month: "short" })} ${dt.getFullYear()}`
+    );
   }
   return labels;
 }
 
 const Analytics: React.FC = () => {
   const [loading, setLoading] = useState(true);
-  const [error,   setError]   = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [accounts, setAccounts] = useState<Account[]>([]);
 
   useEffect(() => {
@@ -54,7 +77,7 @@ const Analytics: React.FC = () => {
   );
 
   const balanceByAccount = useMemo(() => {
-    return accounts.map(a => ({
+    return accounts.map((a) => ({
       name: a.nickname || `${a.type} •••${a.account_number?.slice(-4)}`,
       balance: a.balance ?? 0,
     }));
@@ -65,7 +88,10 @@ const Analytics: React.FC = () => {
     for (const a of accounts) {
       map.set(a.type, (map.get(a.type) || 0) + (a.balance ?? 0));
     }
-    return [...map.entries()].map(([category, amount]) => ({ category, amount }));
+    return [...map.entries()].map(([category, amount]) => ({
+      category,
+      amount,
+    }));
   }, [accounts]);
 
   const netWorthSeries = useMemo(() => {
@@ -83,7 +109,9 @@ const Analytics: React.FC = () => {
   if (loading) {
     return (
       <div className={styles.analyticsContainer}>
-        <div className={styles.loadingContainer}><div className={styles.loadingSpinner}/></div>
+        <div className={styles.loadingContainer}>
+          <div className={styles.loadingSpinner} />
+        </div>
       </div>
     );
   }
@@ -92,7 +120,9 @@ const Analytics: React.FC = () => {
     return (
       <div className={styles.analyticsContainer}>
         <div className={styles.emptyState}>
-          <div className={styles.emptyStateIcon}><Wallet size={40} /></div>
+          <div className={styles.emptyStateIcon}>
+            <Wallet size={40} />
+          </div>
           <h3 className={styles.emptyStateTitle}>Error Loading Analytics</h3>
           <p className={styles.emptyStateText}>{error}</p>
         </div>
@@ -105,9 +135,11 @@ const Analytics: React.FC = () => {
       {/* Header (mismo estilo que Accounts/Groups) */}
       <header className={styles.pageHeader}>
         <h1 className={styles.pageTitle}>Analytics</h1>
-        <p className={styles.pageSubtitle}>Visualize your personal finance insights</p>
+        <p className={styles.pageSubtitle}>
+          Visualize your personal finance insights
+        </p>
       </header>
-
+      <FinanceAgent route="home" />
       {/* Summary card arriba (como Accounts) */}
       <div className={styles.summaryCard}>
         <div className={styles.summaryTitle}>Total Balance</div>
@@ -124,13 +156,27 @@ const Analytics: React.FC = () => {
           <h2 className={styles.cardTitle}>Balance by Account</h2>
           <div className={styles.chartBox}>
             <ResponsiveContainer>
-              <BarChart data={balanceByAccount} margin={{ top: 10, right: 18, left: 0, bottom: 0 }}>
+              <BarChart
+                data={balanceByAccount}
+                margin={{ top: 10, right: 18, left: 0, bottom: 0 }}
+              >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" interval={0} tick={{ fontSize: 12 }} />
-                <YAxis tickFormatter={(v) => (v >= 1000 ? `${(v/1000).toFixed(0)}k` : `${v}`)} />
-                <Tooltip formatter={(v: any) => [fmtMoney(Number(v)), "Balance"]} />
+                <YAxis
+                  tickFormatter={(v) =>
+                    v >= 1000 ? `${(v / 1000).toFixed(0)}k` : `${v}`
+                  }
+                />
+                <Tooltip
+                  formatter={(v: any) => [fmtMoney(Number(v)), "Balance"]}
+                />
                 <Legend />
-                <Bar dataKey="balance" name="Balance" fill="#2563eb" radius={[8,8,0,0]} />
+                <Bar
+                  dataKey="balance"
+                  name="Balance"
+                  fill="#2563eb"
+                  radius={[8, 8, 0, 0]}
+                />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -142,10 +188,18 @@ const Analytics: React.FC = () => {
           <div className={styles.chartBox}>
             <ResponsiveContainer>
               <PieChart>
-                <Tooltip formatter={(v: any) => [fmtMoney(Number(v)), "Amount"]} />
+                <Tooltip
+                  formatter={(v: any) => [fmtMoney(Number(v)), "Amount"]}
+                />
                 <Legend />
-                <Pie data={typeDistribution} dataKey="amount" nameKey="category"
-                     innerRadius={60} outerRadius={100} paddingAngle={3}>
+                <Pie
+                  data={typeDistribution}
+                  dataKey="amount"
+                  nameKey="category"
+                  innerRadius={60}
+                  outerRadius={100}
+                  paddingAngle={3}
+                >
                   {typeDistribution.map((_, i) => (
                     <Cell key={i} fill={PIE_COLORS[i % PIE_COLORS.length]} />
                   ))}
@@ -160,7 +214,10 @@ const Analytics: React.FC = () => {
           <h2 className={styles.cardTitle}>Net Worth</h2>
           <div className={styles.chartBox}>
             <ResponsiveContainer>
-              <AreaChart data={netWorthSeries} margin={{ top: 10, right: 18, left: 0, bottom: 0 }}>
+              <AreaChart
+                data={netWorthSeries}
+                margin={{ top: 10, right: 18, left: 0, bottom: 0 }}
+              >
                 <defs>
                   <linearGradient id="nw" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%" stopColor="#0ea5e9" stopOpacity={0.6} />
@@ -169,11 +226,23 @@ const Analytics: React.FC = () => {
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="date" />
-                <YAxis tickFormatter={(v) => (v >= 1000 ? `${(v/1000).toFixed(0)}k` : `${v}`)} />
-                <Tooltip formatter={(v: any) => [fmtMoney(Number(v)), "Net Worth"]} />
+                <YAxis
+                  tickFormatter={(v) =>
+                    v >= 1000 ? `${(v / 1000).toFixed(0)}k` : `${v}`
+                  }
+                />
+                <Tooltip
+                  formatter={(v: any) => [fmtMoney(Number(v)), "Net Worth"]}
+                />
                 <Legend />
-                <Area type="monotone" dataKey="netWorth" name="Net Worth"
-                      stroke="#0ea5e9" fill="url(#nw)" strokeWidth={2} />
+                <Area
+                  type="monotone"
+                  dataKey="netWorth"
+                  name="Net Worth"
+                  stroke="#0ea5e9"
+                  fill="url(#nw)"
+                  strokeWidth={2}
+                />
               </AreaChart>
             </ResponsiveContainer>
           </div>

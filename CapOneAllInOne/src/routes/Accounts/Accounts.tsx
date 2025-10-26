@@ -4,6 +4,7 @@ import AccountCard from "../../components/AccountCard/AccountCard";
 import styles from "./Accounts.module.css";
 import type { Account } from "../../types";
 import { fetchAccounts } from "../../api/Accounts";
+import FinanceAgent from "../../components/FinanceAgent/FinanceAgent";
 
 const Accounts: React.FC = () => {
   const [accounts, setAccounts] = useState<Account[]>([]);
@@ -72,6 +73,7 @@ const Accounts: React.FC = () => {
         <h1 className={styles.pageTitle}>My Accounts</h1>
         <p className={styles.pageSubtitle}>Manage your finances in one place</p>
       </header>
+      <FinanceAgent route="home" />
 
       {/* Summary Card */}
       {accounts.length > 0 && (

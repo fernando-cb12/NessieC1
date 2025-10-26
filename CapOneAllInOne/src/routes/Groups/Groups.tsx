@@ -2,6 +2,7 @@ import GroupsCard from "../../components/GroupsCard/GroupsCards";
 import type { Group } from "../../types.d";
 import { Plus } from "lucide-react";
 import "./Groups.css";
+import FinanceAgent from "../../components/FinanceAgent/FinanceAgent";
 
 export default function Groups() {
   // Sample data for different group types
@@ -288,7 +289,7 @@ export default function Groups() {
         <h1>Groups</h1>
         <p>Manage your group finances and shared accounts</p>
       </div>
-
+      <FinanceAgent route="home" />
       <div className="cards-container">
         {sampleGroups.map((group) => (
           <GroupsCard key={group.id} group={group} />
@@ -296,7 +297,7 @@ export default function Groups() {
       </div>
 
       {/* Floating Action Button */}
-      <button 
+      <button
         className="floating-add-button"
         onClick={handleAddGroup}
         aria-label="Add new group"

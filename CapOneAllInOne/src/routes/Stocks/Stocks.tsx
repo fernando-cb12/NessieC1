@@ -5,6 +5,7 @@ import InfoButton from "../../components/MarketButton/MarketButton";
 import styles from "./Stocks.module.css";
 import type { MarketData } from "../../types";
 import { fetchMarketData } from "../../api/Stocks";
+import FinanceAgent from "../../components/FinanceAgent/FinanceAgent";
 
 const Stocks: React.FC = () => {
   const [marketData, setMarketData] = useState<MarketData[]>([]);
@@ -59,6 +60,7 @@ const Stocks: React.FC = () => {
       <SearchBar placeholder="Search stocks..." />
 
       {/* USA Market Section */}
+      <FinanceAgent route="home" />
       <section className={styles.marketSection}>
         <h2 className={styles.marketTitle}>Market: USA</h2>
         <div className={styles.marketGrid}>
