@@ -56,11 +56,10 @@ const Stocks: React.FC = () => {
 
   return (
     <div className={styles.stocksContainer}>
-      {/* Search Bar */}
-      <SearchBar placeholder="Search stocks..." />
-
       {/* USA Market Section */}
       <FinanceAgent route="stocks" />
+      {/* Search Bar */}
+      <SearchBar placeholder="Search stocks..." />
       <section className={styles.marketSection}>
         <h2 className={styles.marketTitle}>Market: USA</h2>
         <div className={styles.marketGrid}>
