@@ -11,11 +11,17 @@
 .analyticsContainer {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 20px;
   background: var(--bg);
   min-height: 100vh;
   /* evita que el navbar tape contenido en mobile */
   padding-bottom: 120px;
+}
+
+@media (min-width: 428px) {
+  .analyticsContainer {
+    padding: 30px;
+  }
 }
 
 @media (min-width: 769px) {
@@ -33,11 +39,11 @@
 
 .pageHeader {
   text-align: center;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .pageTitle {
-  font-size: 2.5rem;
+  font-size: 28px;
   color: var(--capital-one-blue);
   font-weight: 700;
   letter-spacing: -0.5px;
@@ -46,7 +52,31 @@
 
 .pageSubtitle {
   color: var(--text-secondary);
-  font-size: 1.05rem;
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  .pageHeader {
+    margin-bottom: 32px;
+  }
+
+  .pageTitle {
+    font-size: 36px;
+  }
+
+  .pageSubtitle {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .pageTitle {
+    font-size: 42px;
+  }
+
+  .pageSubtitle {
+    font-size: 18px;
+  }
 }
 
 /* Summary card como en Accounts */
@@ -55,11 +85,17 @@
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: 24px;
-  margin: 0 20px 28px;
+  margin: 0 0 28px;
   display: grid;
   grid-template-columns: 1fr auto auto;
   gap: 12px 24px;
   align-items: center;
+}
+
+@media (min-width: 428px) {
+  .summaryCard {
+    padding: 28px;
+  }
 }
 
 .summaryTitle {
@@ -85,7 +121,13 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 24px;
-  padding: 0 20px;
+  padding: 0;
+}
+
+@media (min-width: 428px) {
+  .cardsGrid {
+    gap: 28px;
+  }
 }
 
 .card {

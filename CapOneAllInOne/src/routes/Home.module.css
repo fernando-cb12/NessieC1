@@ -26,6 +26,22 @@
   box-sizing: border-box;
 }
 
+/* Desktop: Add left padding to prevent sidebar overlap */
+@media (min-width: 769px) {
+  .homeContainer {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-left: 120px;
+    padding-bottom: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .homeContainer {
+    padding-left: 160px;
+  }
+}
+
 /* Welcome Header */
 .welcomeHeader {
   display: flex;
@@ -241,19 +257,17 @@
   align-items: center;
   gap: 8px;
   padding: 16px 12px;
-  background: var(--background-light);
+  background: var(--card-bg);
   border: none;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: inset 2px 2px 4px var(--shadow-dark),
-    inset -2px -2px 4px var(--shadow-light);
+  box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
 }
 
 .actionButton:hover {
   transform: translateY(-1px);
-  box-shadow: inset 1px 1px 2px var(--shadow-dark),
-    inset -1px -1px 2px var(--shadow-light);
+  box-shadow: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
 }
 
 .actionButton svg {
@@ -377,13 +391,6 @@
 
 /* iPad (768px) */
 @media (min-width: 768px) {
-  .homeContainer {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 40px 60px; /* Centered with equal padding on both sides */
-    padding-bottom: 40px;
-  }
-  
   .welcomeHeader {
     margin-bottom: 32px;
   }
@@ -462,10 +469,7 @@
 /* MacBook Pro (1440px) */
 @media (min-width: 1440px) {
   .homeContainer {
-    max-width: 1600px;
-    margin: 0 auto;
-    padding: 60px 60px 60px 180px; /* Left padding for navbar, right padding for symmetry */
-    padding-bottom: 60px;
+    padding: 60px 60px 60px 200px;
   }
   
   .welcomeTitle {

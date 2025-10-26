@@ -13,7 +13,7 @@
 
 /* Account Card Container */
 .accountCard {
-  background: var(--background-light);
+  background: var(--card-bg);
   border-radius: 24px;
   padding: 20px;
   margin: 16px 0;
@@ -21,7 +21,7 @@
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-  /* Neomorphism effect */
+  /* Card shadow effect */
   box-shadow: 8px 8px 16px var(--shadow-dark),
     -8px -8px 16px var(--shadow-light);
 }
@@ -149,7 +149,7 @@
   width: 52px;
   height: 52px;
   border-radius: 16px;
-  background: var(--background-light);
+  background: var(--card-bg);
   border: none;
   cursor: pointer;
   display: flex;
@@ -157,7 +157,7 @@
   justify-content: center;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-  /* Neomorphism button */
+  /* Card shadow button */
   box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
 }
 

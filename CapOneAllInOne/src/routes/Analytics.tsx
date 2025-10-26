@@ -139,7 +139,10 @@ const Analytics: React.FC = () => {
           Visualize your personal finance insights
         </p>
       </header>
-      <FinanceAgent route="home" />
+
+      {/* Finance Assistant */}
+      <FinanceAgent route="analytics" />
+
       {/* Summary card arriba (como Accounts) */}
       <div className={styles.summaryCard}>
         <div className={styles.summaryTitle}>Total Balance</div>

@@ -290,7 +290,9 @@ export default function Groups() {
         <h1>Groups</h1>
         <p>Manage your group finances and shared accounts</p>
       </div>
-      <FinanceAgent route="home" />
+
+      {/* Finance Assistant */}
+      <FinanceAgent route="groups" />
       <div className="cards-container">
         {sampleGroups.map((group) => (
           <GroupsCard key={group.id} group={group} />

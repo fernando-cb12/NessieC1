@@ -60,7 +60,7 @@ const Stocks: React.FC = () => {
       <SearchBar placeholder="Search stocks..." />
 
       {/* USA Market Section */}
-      <FinanceAgent route="home" />
+      <FinanceAgent route="stocks" />
       <section className={styles.marketSection}>
         <h2 className={styles.marketTitle}>Market: USA</h2>
         <div className={styles.marketGrid}>

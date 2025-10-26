@@ -3,6 +3,7 @@ import { Wallet, TrendingUp, Users, BarChart3, Plus, ChevronRight, Eye } from "l
 import AccountCard from "../components/AccountCard/AccountCard";
 import GroupsCard from "../components/GroupsCard/GroupsCards";
 import MarketItem from "../components/MarketItem/MarketItem";
+import FinanceAgent from "../components/FinanceAgent/FinanceAgent";
 import { fetchAccounts } from "../api/Accounts";
 import { fetchMarketData } from "../api/Stocks";
 import type { Account, Group, MarketData } from "../types";
@@ -186,6 +187,9 @@ const Home: React.FC = () => {
           </button>
         </div>
       </header>
+
+      {/* Finance Assistant */}
+      <FinanceAgent route="home" />
 
       {/* Quick Stats Grid */}
       <section className={styles.statsGrid}>

@@ -1,12 +1,18 @@
 .financeAgent {
-  width: calc(100% - 24px);
+  width: calc(100% - 32px);
   max-width: 1200px;
-  background: var(--background-light);
+  background: var(--card-bg);
   border-radius: 24px;
   padding: 16px;
-  margin: 12px;
+  margin: 0 auto 20px;
   box-shadow: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (min-width: 428px) {
+  .financeAgent {
+    width: calc(100% - 40px);
+  }
 }
 
 .header {
@@ -128,12 +134,21 @@
   }
 }
 
+/* Tablet adjustments */
+@media (min-width: 428px) {
+  .financeAgent {
+    padding: 18px;
+    width: calc(100% - 40px);
+  }
+}
+
 /* Desktop adjustments */
 @media (min-width: 768px) {
   .financeAgent {
     padding: 20px;
-    margin: 16px auto;
+    margin: 0 auto 24px;
     border-radius: 28px;
+    width: calc(100% - 40px);
   }
 
   .header h2 {
@@ -163,7 +178,9 @@
 @media (min-width: 1024px) {
   .financeAgent {
     padding: 24px;
+    margin: 0 auto 32px;
     border-radius: 32px;
+    width: calc(100% - 40px);
     box-shadow: 12px 12px 24px var(--shadow-dark),
                 -12px -12px 24px var(--shadow-light);
   }

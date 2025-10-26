@@ -73,7 +73,9 @@ const Accounts: React.FC = () => {
         <h1 className={styles.pageTitle}>My Accounts</h1>
         <p className={styles.pageSubtitle}>Manage your finances in one place</p>
       </header>
-      <FinanceAgent route="home" />
+
+      {/* Finance Assistant */}
+      <FinanceAgent route="accounts" />
 
       {/* Summary Card */}
       {accounts.length > 0 && (
