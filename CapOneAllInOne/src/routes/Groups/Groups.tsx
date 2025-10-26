@@ -2,6 +2,7 @@ import GroupsCard from "../../components/GroupsCard/GroupsCards";
 import type { Group } from "../../types.d";
 import { Plus } from "lucide-react";
 import "./Groups.css";
+import accountStyles from "../Accounts/Accounts.module.css";
 
 export default function Groups() {
   // Sample data for different group types
@@ -297,11 +298,11 @@ export default function Groups() {
 
       {/* Floating Action Button */}
       <button 
-        className="floating-add-button"
+        className={accountStyles.addButton}
         onClick={handleAddGroup}
         aria-label="Add new group"
       >
-        <Plus size={24} />
+        <Plus size={28} />
       </button>
     </div>
   );
