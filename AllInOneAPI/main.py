@@ -5,9 +5,6 @@ from fastapi.responses import JSONResponse
 from dotenv import load_dotenv
 import uvicorn
 
-from app.routers import accounts, groups, analytics, stocks
-from app.core.config import settings
-from app.core.database import init_db
 
 # Load environment variables
 load_dotenv()
@@ -28,16 +25,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include routers
-app.include_router(accounts.router, prefix="/api/v1/accounts", tags=["accounts"])
-app.include_router(groups.router, prefix="/api/v1/groups", tags=["groups"])
-app.include_router(analytics.router, prefix="/api/v1/analytics", tags=["analytics"])
-app.include_router(stocks.router, prefix="/api/v1/stocks", tags=["stocks"])
 
-@app.on_event("startup")
-async def startup_event():
-    """Initialize database and other startup tasks"""
-    await init_db()
 
 @app.get("/")
 async def root():

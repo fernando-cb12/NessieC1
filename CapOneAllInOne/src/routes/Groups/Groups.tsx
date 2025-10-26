@@ -3,6 +3,7 @@ import type { Group } from "../../types.d";
 import { Plus } from "lucide-react";
 import "./Groups.css";
 import accountStyles from "../Accounts/Accounts.module.css";
+import FinanceAgent from "../../components/FinanceAgent/FinanceAgent";
 
 export default function Groups() {
   // Sample data for different group types
@@ -289,7 +290,7 @@ export default function Groups() {
         <h1>Groups</h1>
         <p>Manage your group finances and shared accounts</p>
       </div>
-
+      <FinanceAgent route="home" />
       <div className="cards-container">
         {sampleGroups.map((group) => (
           <GroupsCard key={group.id} group={group} />
