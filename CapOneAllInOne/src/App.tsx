@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./routes/Home";
 import "./App.css";
 import Accounts from "./routes/Accounts/Accounts";
-import Stocks from "./routes/Stocks";
+import Stocks from "./routes/Stocks/Stocks";
 import Analytics from "./routes/Analytics";
 import Groups from "./routes/Groups/Groups";
 import Navbar from "./components/Navbar/Navbar";

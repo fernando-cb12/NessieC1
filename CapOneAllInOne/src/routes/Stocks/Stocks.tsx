@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import SearchBar from "../components/SearchBar/SearchBar";
-import MarketItem from "../components/MarketItem/MarketItem";
-import InfoButton from "../components/MarketButton/MarketButton";
+import SearchBar from "../../components/SearchBar/SearchBar";
+import MarketItem from "../../components/MarketItem/MarketItem";
+import InfoButton from "../../components/MarketButton/MarketButton";
 import styles from "./Stocks.module.css";
-import type { MarketData } from "../types";
-import { fetchMarketData } from "../api/Stocks";
+import type { MarketData } from "../../types";
+import { fetchMarketData } from "../../api/Stocks";
 
 const Stocks: React.FC = () => {
   const [marketData, setMarketData] = useState<MarketData[]>([]);

@@ -40,7 +40,7 @@ export const fetchStockPositions = async (): Promise<StockPosition[]> => {
  * Fetches account information from Alpaca
  * @returns Promise<any>
  */
-export const fetchAlpacaAccount = async (): Promise<any> => {
+export const fetchAlpacaAccount = async (): Promise<null> => {
   try {
     const response = await fetch(`${ALPACA_BASE_URL}/v2/account`, {
       method: "GET",
@@ -71,7 +71,7 @@ export const fetchAlpacaAccount = async (): Promise<any> => {
  * @param symbol - Stock symbol (e.g., "AAPL")
  * @returns Promise<any>
  */
-export const fetchStockQuote = async (symbol: string): Promise<any> => {
+export const fetchStockQuote = async (symbol: string): Promise<null> => {
   try {
     const response = await fetch(
       `https://data.alpaca.markets/v2/stocks/${symbol}/quotes/latest`,
