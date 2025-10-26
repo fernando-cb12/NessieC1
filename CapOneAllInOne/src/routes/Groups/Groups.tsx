@@ -1,5 +1,6 @@
 import GroupsCard from "../../components/GroupsCard/GroupsCards";
 import type { Group } from "../../types.d";
+import { Plus } from "lucide-react";
 import "./Groups.css";
 
 export default function Groups() {
@@ -276,6 +277,11 @@ export default function Groups() {
     },
   ];
 
+  const handleAddGroup = () => {
+    // Placeholder function for adding new group
+    console.log("Add new group clicked");
+  };
+
   return (
     <div className="groups-page">
       <div className="groups-header">
@@ -288,6 +294,15 @@ export default function Groups() {
           <GroupsCard key={group.id} group={group} />
         ))}
       </div>
+
+      {/* Floating Action Button */}
+      <button 
+        className="floating-add-button"
+        onClick={handleAddGroup}
+        aria-label="Add new group"
+      >
+        <Plus size={24} />
+      </button>
     </div>
   );
 }

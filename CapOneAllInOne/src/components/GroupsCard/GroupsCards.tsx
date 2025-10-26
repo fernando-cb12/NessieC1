@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Users, ChevronDown, DollarSign, Calendar, Settings, Bell, ArrowUp, BookCheck, ArrowUpFromLine, ArrowLeftRight, Receipt} from "lucide-react";
+import { Users, ChevronDown, DollarSign, Calendar, Settings, Bell, ArrowUp, BookCheck, ArrowUpFromLine, ArrowLeftRight, Receipt, Wallet} from "lucide-react";
 import type { Group } from "../../types.d";
 import styles from "./GroupsCard.module.css";
 
