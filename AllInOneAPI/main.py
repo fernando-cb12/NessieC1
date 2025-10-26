@@ -1,8 +1,9 @@
 import os
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import FastAPI, HTTPException, Depends, Body
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from dotenv import load_dotenv
+from app.services.gemini import generate_text
 import uvicorn
 
 
@@ -34,6 +35,21 @@ async def root():
 @app.get("/health")
 async def health_check():
     return {"status": "healthy", "message": "API is running"}
+
+
+@app.post("/api/chat")
+async def chat(payload: dict = Body(...)):
+    """Accept a JSON payload like {"message": "..."} and return the assistant reply."""
+    message = payload.get("message")
+    if not message:
+        raise HTTPException(status_code=400, detail="Missing 'message' in request body")
+
+    try:
+        reply = await generate_text(message)
+        return JSONResponse({"reply": reply})
+    except Exception as e:
+        # return error details safely
+        raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
     uvicorn.run(

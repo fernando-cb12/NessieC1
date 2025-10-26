@@ -55,16 +55,30 @@ const FinanceAgent: React.FC<FinanceAgentProps> = ({ route }) => {
     if (!userInput.trim()) return;
 
     setIsLoading(true);
-    // TODO: Replace with actual Gemini API call
     try {
-      // Simulated API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      setResponse(
-        "This is a placeholder response. Gemini API integration pending."
-      );
+      const resp = await fetch("http://localhost:8000/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message:
+            "You are a financial expert who gives advice to users. All your answers must be exclusively plain text, and you are not allowed to answer off-topic questions, instead just explain that the request is not valid and why." +
+            userInput,
+        }),
+      });
+
+      if (!resp.ok) {
+        const text = await resp.text();
+        console.error("Chat API error:", resp.status, text);
+        setResponse(
+          "Sorry, I couldn't process your request. Please try again."
+        );
+      } else {
+        const data = await resp.json();
+        setResponse(data.reply || "No response from assistant.");
+      }
     } catch (error) {
       console.error("Error:", error);
-      setResponse("Sorry, I couldn't process your request. Please try again.");
+      setResponse("Sorry, I couldn't reach the assistant. Check backend.");
     } finally {
       setIsLoading(false);
     }
