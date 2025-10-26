@@ -10,6 +10,9 @@ import uvicorn
 # Load environment variables
 load_dotenv()
 
+# Get CORS origins from environment
+ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "http://localhost:3000,http://localhost:5173").split(",")
+
 # Initialize FastAPI app
 app = FastAPI(
     title="AllInOne Financial API",
@@ -20,7 +23,7 @@ app = FastAPI(
 # CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:5173"],  # React dev servers
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

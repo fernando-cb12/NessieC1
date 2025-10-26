@@ -56,7 +56,9 @@ const FinanceAgent: React.FC<FinanceAgentProps> = ({ route }) => {
 
     setIsLoading(true);
     try {
-      const resp = await fetch("http://localhost:8000/api/chat", {
+      const apiBaseUrl =
+        import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
+      const resp = await fetch(`${apiBaseUrl}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
